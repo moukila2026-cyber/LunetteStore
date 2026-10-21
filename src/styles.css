@@ -992,30 +992,6 @@ p {
 .footer-bottom > span:nth-child(2) {
   font-style: italic;
 }
-.floating-whatsapp {
-  position: fixed;
-  right: 24px;
-  bottom: 24px;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 13px 18px;
-  background: var(--green);
-  color: white;
-  border-radius: 40px;
-  box-shadow: 0 4px 20px #17171320;
-  transition: transform 0.2s;
-}
-.floating-whatsapp:hover {
-  transform: translateY(-3px);
-}
-.floating-whatsapp > span:not(.sr-only) {
-  font-size: 11px;
-}
-.mobile-contact-bar {
-  display: none;
-}
 .lightbox {
   border: 0;
   padding: 0;
@@ -1795,33 +1771,6 @@ p {
     gap: 10px;
     align-items: center;
     line-height: 1.6;
-  }
-  .floating-whatsapp {
-    display: none;
-  }
-  .mobile-contact-bar {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 25;
-    background: var(--cream);
-    border-top: 1px solid var(--border);
-    padding-bottom: env(safe-area-inset-bottom);
-  }
-  .mobile-contact-bar > a {
-    display: flex;
-    gap: 9px;
-    justify-content: center;
-    align-items: center;
-    min-height: 53px;
-    font-size: 12px;
-  }
-  .mobile-contact-bar > a:last-child {
-    background: var(--green);
-    color: white;
   }
   .lightbox {
     width: calc(100% - 28px);

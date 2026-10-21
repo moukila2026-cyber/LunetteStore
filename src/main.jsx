@@ -6,6 +6,7 @@ import "@fontsource/dm-sans/latin-600.css";
 import "@fontsource/playfair-display/latin-400.css";
 import "@fontsource/playfair-display/latin-400-italic.css";
 import "./styles.css";
+import "./atelier.css";
 import App from "./App";
 const container = document.getElementById("root");
 const app = (

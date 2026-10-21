@@ -76,10 +76,16 @@ export default function Contact() {
                 <ExternalLink
                   key={phone.whatsapp}
                   href={whatsappLink(phone)}
-                  className="button button-green"
+                  className="contact-whatsapp-link"
                 >
-                  <WhatsAppIcon size={19} />
-                  {phone.label}
+                  <span className="contact-whatsapp-icon">
+                    <WhatsAppIcon size={24} />
+                  </span>
+                  <span>
+                    <small>ÉCRIVEZ-NOUS</small>
+                    <strong>{phone.label}</strong>
+                  </span>
+                  <ArrowUpRight size={18} />
                 </ExternalLink>
               ))}
             </div>

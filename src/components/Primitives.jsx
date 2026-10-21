@@ -13,16 +13,17 @@ export function Brand({ footer = false }) {
     </a>
   );
 }
-export function Picture({ name, alt, className = "", hero = false }) {
+export function Picture({ name, alt, className = "", hero = false, sizes }) {
   return (
     <img
       className={className}
       src={`/images/${name}-1280.webp`}
       srcSet={`/images/${name}-640.webp 640w, /images/${name}-1280.webp 1280w`}
       sizes={
-        hero
+        sizes ||
+        (hero
           ? "(max-width: 700px) 100vw, 50vw"
-          : "(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 33vw"
+          : "(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 33vw")
       }
       alt={alt}
       loading={hero ? "eager" : "lazy"}
@@ -69,8 +70,12 @@ export function WhatsAppIcon({ size = 20, ...props }) {
       aria-hidden="true"
       {...props}
     >
-      <path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.8A8.5 8.5 0 1 1 20.5 11.7Z" />
-      <path d="M8.3 7.6c-.6.2-.9 1-.7 1.8.7 2.7 2.3 4.3 5 5 .8.2 1.6-.1 1.8-.7l.5-1.1-2.2-1.1-.7.8c-1.4-.5-2.2-1.3-2.7-2.7l.8-.7L9 6.7Z" />
+      <path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.8a8.5 8.5 0 1 1 16.2-4.1Z" />
+      <path
+        d="m8.7 7.5-.5-.1c-.5 0-1.1.6-1.1 1.5 0 2.3 3.7 6.1 6.6 6.1 1 0 1.7-.7 1.7-1.2l-.1-.5-2.1-1-.8.9c-1.2-.5-2.4-1.6-2.9-2.8l.8-.9-1-2Z"
+        fill="currentColor"
+        stroke="none"
+      />
     </svg>
   );
 }

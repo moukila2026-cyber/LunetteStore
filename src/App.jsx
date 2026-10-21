@@ -5,29 +5,30 @@ import {
   Glasses,
   HeartHandshake,
   Sparkles,
-  Phone,
 } from "lucide-react";
 import Header from "./components/Header";
+import WhatsAppWidget from "./components/WhatsAppWidget";
+import Editorial from "./components/Editorial";
+import VisualEffects from "./components/VisualEffects";
 import Gallery from "./components/Gallery";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
-import {
-  Brand,
-  Picture,
-  ExternalLink,
-  WhatsAppIcon,
-} from "./components/Primitives";
-import { navigation, shop, whatsappLink } from "./data";
+import { Brand, Picture, ExternalLink } from "./components/Primitives";
+import { navigation, shop } from "./data";
 export default function App() {
   return (
     <>
       <a href="#main" className="skip-link">
         Aller au contenu
       </a>
+      <VisualEffects />
       <Header />
       <main id="main">
         <section id="accueil" className="hero">
           <div className="hero-copy">
+            <span className="hero-edition" aria-hidden="true">
+              LE REGARD EST UNE SIGNATURE.
+            </span>
             <p className="eyebrow">
               <span /> VOTRE OPTICIEN À DALOA
             </p>
@@ -65,6 +66,21 @@ export default function App() {
               alt="Portrait éditorial illustratif d’une femme portant des lunettes de soleil écaille"
               hero
             />
+            <a
+              className="hero-inspiration"
+              href="#montures"
+              aria-label="Découvrir nos inspirations optiques"
+            >
+              <Picture
+                name="modern"
+                alt="Illustration d’une monture optique fine dorée"
+              />
+              <span>
+                LE DÉTAIL QUI CHANGE TOUT
+                <strong>Votre prochaine signature.</strong>
+              </span>
+              <ArrowUpRight size={20} />
+            </a>
             <span className="hero-vertical">
               LUNETTE STORE — L’ART DE VOIR AUTREMENT
             </span>
@@ -103,11 +119,12 @@ export default function App() {
           </div>
         </div>
         <Gallery />
+        <Editorial />
         <section id="boutique" className="brand-story">
           <div className="story-image">
             <Picture
-              name="timeless"
-              alt="Composition illustrative de lunettes écaille sur une surface de pierre claire"
+              name="craft"
+              alt="Détail illustratif d’une monture écaille ambrée sur un socle de travertin"
             />
             <div className="story-image-label">
               LE SENS DU DÉTAIL.
@@ -211,22 +228,7 @@ export default function App() {
           <a href="#accueil">Retour en haut ↑</a>
         </div>
       </footer>
-      <ExternalLink
-        href={whatsappLink(shop.phones[0])}
-        className="floating-whatsapp"
-        aria-label="Discuter avec Lunette Store sur WhatsApp"
-      >
-        <WhatsAppIcon size={26} />
-        <span>Une question ?</span>
-      </ExternalLink>
-      <div className="mobile-contact-bar">
-        <a href={`tel:${shop.phones[0].international}`}>
-          <Phone size={18} /> Appeler
-        </a>
-        <ExternalLink href={whatsappLink(shop.phones[0])}>
-          <WhatsAppIcon /> WhatsApp
-        </ExternalLink>
-      </div>
+      <WhatsAppWidget />
     </>
   );
 }

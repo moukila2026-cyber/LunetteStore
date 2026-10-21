@@ -132,7 +132,7 @@ test("navigation mobile ou bureau", async ({ page, isMobile }) => {
     await page.keyboard.press("Escape");
     await expect(page.locator("#mobile-menu")).not.toBeVisible();
     await expect(toggle).toBeFocused();
-    await expect(page.locator(".mobile-contact-bar")).toBeVisible();
+    await expect(page.locator(".whatsapp-launcher")).toBeVisible();
   } else {
     await page
       .getByRole("navigation", { name: "Navigation principale", exact: true })
@@ -166,9 +166,23 @@ test("accessibilité WCAG A/AA de la page et de la visionneuse", async ({
 test("captures de contrôle", async ({ page }, testInfo) => {
   await page.goto("/");
   await page.evaluate(() => document.fonts.ready);
+  for (const image of await page.locator("img").all()) {
+    await image.scrollIntoViewIfNeeded();
+    await expect
+      .poll(() => image.evaluate((img) => img.complete && img.naturalWidth > 0))
+      .toBe(true);
+  }
+  await page.evaluate(() => window.scrollTo(0, 0));
   await page.screenshot({
     path: testInfo.outputPath("page.png"),
     fullPage: true,
+    animations: "disabled",
+  });
+  await page
+    .getByRole("button", { name: "Ouvrir les contacts WhatsApp" })
+    .click();
+  await page.screenshot({
+    path: testInfo.outputPath("whatsapp.png"),
     animations: "disabled",
   });
 });
@@ -222,4 +236,82 @@ test("contenu statique accessible sans JavaScript", async ({ request }) => {
   expect(html).toContain("Votre nouveau regard");
   expect(html).toContain("tel:+2250101162137");
   expect(html).toContain("application/ld+json");
+});
+
+test("WhatsApp flottant : deux contacts, clavier, fermeture et accessibilité", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const trigger = page.locator(".whatsapp-launcher");
+  const panel = page.getByRole("region", {
+    name: "Un nouveau regard. Une conversation.",
+  });
+  await expect(page.locator("#whatsapp-panel")).not.toBeVisible();
+  await trigger.click();
+  await expect(panel).toBeVisible();
+  await expect(trigger).toHaveAttribute("aria-expanded", "true");
+  await expect(
+    page.getByRole("button", { name: "Fermer le panneau WhatsApp" }),
+  ).toBeFocused();
+  for (const number of ["2250101162137", "2250713582357"]) {
+    const link = panel.locator(`a[href^="https://wa.me/${number}"]`);
+    await expect(link).toBeVisible();
+    expect(
+      new URL(await link.getAttribute("href")).searchParams.get("text"),
+    ).toContain("Bonjour Lunette Store");
+  }
+  const accessibility = await new AxeBuilder({ page })
+    .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
+    .analyze();
+  expect(accessibility.violations).toEqual([]);
+  await page.keyboard.press("Escape");
+  await expect(panel).not.toBeVisible();
+  await expect(trigger).toBeFocused();
+  await trigger.click();
+  await page
+    .getByRole("button", { name: "Fermer le panneau WhatsApp" })
+    .click();
+  await expect(panel).not.toBeVisible();
+  await trigger.click();
+  await page.mouse.click(6, 6);
+  await expect(panel).not.toBeVisible();
+  await page.locator("footer").scrollIntoViewIfNeeded();
+  await expect(trigger).toBeInViewport();
+});
+
+test("WhatsApp ouvert sur petits écrans et en paysage", async ({ page }) => {
+  await page.goto("/");
+  for (const [width, height] of [
+    [320, 568],
+    [390, 844],
+    [844, 390],
+  ]) {
+    await page.setViewportSize({ width, height });
+    await page
+      .getByRole("button", { name: "Ouvrir les contacts WhatsApp" })
+      .click();
+    const panel = page.locator("#whatsapp-panel");
+    const box = await panel.boundingBox();
+    expect(box.x).toBeGreaterThanOrEqual(0);
+    expect(box.y).toBeGreaterThanOrEqual(0);
+    expect(box.x + box.width).toBeLessThanOrEqual(width);
+    expect(box.y + box.height).toBeLessThanOrEqual(height);
+    await panel.locator("a").last().scrollIntoViewIfNeeded();
+    await expect(panel.locator("a").last()).toBeInViewport();
+    await page.keyboard.press("Escape");
+  }
+});
+
+test("les animations révèlent le contenu et respectent la réduction de mouvement", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/");
+  const portrait = page.locator(".editorial-man");
+  await portrait.scrollIntoViewIfNeeded();
+  await expect(portrait).toHaveClass(/is-revealed/);
+  await expect(portrait).toHaveCSS("opacity", "1");
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  const card = page.locator(".location-card");
+  await expect(card).toHaveCSS("opacity", "1");
 });

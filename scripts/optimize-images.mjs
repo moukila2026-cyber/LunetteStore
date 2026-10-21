@@ -10,6 +10,10 @@ for (const name of [
   "men",
   "kids",
   "care",
+  "editorial-man",
+  "editorial-woman",
+  "sunlight",
+  "craft",
 ]) {
   for (const width of [640, 1280]) {
     await sharp(`source-assets/${name}.png`)

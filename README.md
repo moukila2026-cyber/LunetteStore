@@ -8,7 +8,16 @@ Site vitrine premium, responsive et statique pour Lunette Store à Gogoguhe, à 
 
 Projet Vercel : `lunette-store-daloa`, compte `moukila`. Déploiement de production réellement effectué et état `READY` confirmé ; le contenu public a été récupéré sans authentification le 21 octobre 2026. Les sources sont sur la branche `arena/6abd0035-lunettestore`, publiée sur GitHub, sans fusion dans `main`.
 
-Vérifications exécutées : compilation et pré-rendu réussis, **18 tests Playwright réussis** (9 scénarios déclinés en bureau et mobile), zéro violation dans les analyses axe automatisées effectuées, `npm audit` sans vulnérabilité signalée et formatage vérifié. Les tests de fonctionnement ont été exécutés sur la version de production locale ; la vérification distante porte sur la disponibilité et le contenu public.
+Vérifications exécutées : compilation et pré-rendu réussis, **24 tests Playwright réussis** (12 scénarios déclinés en bureau et mobile), zéro violation dans les analyses axe automatisées effectuées, `npm audit` sans vulnérabilité signalée et formatage vérifié. Les tests de fonctionnement ont été exécutés sur la version de production locale ; la vérification distante porte sur la disponibilité et le contenu public.
+
+## Édition Atelier — enrichissement visuel
+
+- Nouveau bouton WhatsApp flottant sur ordinateur **et** mobile, avec panneau de contact ivoire/vert profond, deux numéros et messages préremplis. Il remplace l’ancienne barre mobile.
+- Fermeture par bouton, Échap ou clic extérieur ; retour du focus au déclencheur après fermeture au clavier. Le panneau est non modal, n’envoie rien automatiquement et ne promet pas de réponse immédiate.
+- Quatre nouveaux visuels : portraits homme/femme, nature morte solaire et détail de monture. Le « carnet de style » utilise une composition photographique asymétrique.
+- Révélations au défilement, progression de lecture, transitions de survol et mouvement d’entrée du portrait. Le contenu reste visible sans JavaScript et les animations respectent la préférence de réduction de mouvement.
+- Styles additionnels isolés dans `src/atelier.css` ; composants `Editorial.jsx`, `VisualEffects.jsx` et `WhatsAppWidget.jsx`.
+- Tests supplémentaires du panneau, de ses liens, des petits écrans/paysage, de l’accessibilité et des animations.
 
 ## Stack et fonctionnalités
 
@@ -16,7 +25,7 @@ Vérifications exécutées : compilation et pré-rendu réussis, **18 tests Play
 - Playfair Display et DM Sans auto-hébergées via Fontsource (pas de requête Google Fonts).
 - HTML pré-rendu à la compilation pour le SEO et la consultation sans JavaScript, puis hydratation React.
 - Sept inspirations, filtres et visionneuse native `dialog` : clavier, Échap, navigation précédente/suivante, confinement et restauration du focus.
-- Menu mobile, ancres, barre mobile d’appel/WhatsApp et WhatsApp contextuel par style.
+- Menu mobile, ancres, panneau WhatsApp flottant et WhatsApp contextuel par style.
 - Liens téléphone, e-mail, deux WhatsApp préremplis et recherche Google Maps par adresse. Aucune coordonnée GPS inventée ni carte tierce chargée automatiquement.
 - Métadonnées françaises, URL canonique, sitemap et données structurées `Optician`, sans avis, horaires ou certifications fictifs.
 - Images WebP en deux tailles, chargement différé sauf visuel principal, respect de `prefers-reduced-motion`.
@@ -48,10 +57,14 @@ src/
   data.js                  Coordonnées, navigation, catégories, textes et images
   main.jsx                 Polices locales et hydratation React
   styles.css               Identité visuelle et responsive
+  atelier.css              Finition éditoriale, animations et widget flottant
   components/
     Header.jsx             Navigation bureau/mobile
     Gallery.jsx            Catalogue, filtres et visionneuse
     Services.jsx           Les six prestations
+    Editorial.jsx          Carnet de style photographique
+    WhatsAppWidget.jsx     Panneau de contact flottant
+    VisualEffects.jsx      Révélations et progression de lecture
     Contact.jsx            Coordonnées et localisation
     Primitives.jsx         Logo, images, liens et icône WhatsApp
 public/
@@ -68,13 +81,13 @@ vercel.json                Build, répertoire de sortie et en-têtes HTTP
 
 ### Remplacer les images
 
-Les huit visuels (portrait + sept inspirations) ont été **générés par IA pour ce projet**. Ils ne représentent ni une cliente réelle, ni le stock de la boutique, ni ses locaux. Les mentions illustratives sont visibles sur le site. Ne pas les transformer en preuves de disponibilité.
+Les douze visuels (trois portraits, sept inspirations et deux natures mortes éditoriales) ont été **générés par IA pour ce projet**. Ils ne représentent ni une cliente réelle, ni le stock de la boutique, ni ses locaux. Les mentions illustratives sont visibles sur le site. Ne pas les transformer en preuves de disponibilité.
 
 1. Obtenir les photographies réelles et les autorisations d’utilisation de la responsable ; obtenir aussi l’accord des personnes reconnaissables.
 2. Remplacer `public/images/NOM-640.webp` et `NOM-1280.webp` en conservant les noms, ou modifier `image` et `alt` dans `src/data.js`.
-3. Pour utiliser l’outil d’optimisation, créer `source-assets/` puis y placer : `editorial.png`, `timeless.png`, `modern.png`, `bold.png`, `women.png`, `men.png`, `kids.png`, `care.png`. Exécuter `npm run images`.
+3. Pour utiliser l’outil d’optimisation, créer `source-assets/` puis y placer : `editorial.png`, `timeless.png`, `modern.png`, `bold.png`, `women.png`, `men.png`, `kids.png`, `care.png`, `editorial-man.png`, `editorial-woman.png`, `sunlight.png`, `craft.png`. Exécuter `npm run images`.
 4. Adapter les textes, tailles et cadrages si les photos réelles ont d’autres proportions.
-5. Ne retirer les mentions « illustratif / généré par IA » que des visuels effectivement remplacés. Elles figurent dans `App.jsx`, `Gallery.jsx` et dans les textes alternatifs de `data.js`.
+5. Ne retirer les mentions « illustratif / généré par IA » que des visuels effectivement remplacés. Elles figurent dans `App.jsx`, `Gallery.jsx`, `Editorial.jsx` et dans les textes alternatifs de `data.js`.
 
 Les originaux volumineux de travail ne sont pas versionnés (`source-assets/` ignoré). Les WebP livrés suffisent au déploiement. Les polices sont distribuées sous SIL Open Font License ; les licences sont incluses dans leurs paquets npm. Lucide est distribué sous licence ISC.
 
@@ -82,7 +95,8 @@ Les originaux volumineux de travail ne sont pas versionnés (`source-assets/` ig
 
 - Coordonnées, messages WhatsApp, adresse Maps : `src/data.js`.
 - Services et conditions commerciales : `src/components/Services.jsx`.
-- Palette, typographies, espacements : variables et règles dans `src/styles.css`.
+- Palette, typographies, espacements : variables et règles dans `src/styles.css` et `src/atelier.css`.
+- Panneau WhatsApp : `src/components/WhatsAppWidget.jsx` ; numéros et message commun dans `src/data.js`.
 - SEO et données structurées : `index.html`. Lors d’un changement de coordonnées, modifier aussi le JSON-LD et le texte de secours sans JavaScript.
 - Année : calculée automatiquement. Le pré-rendu est actualisé à chaque compilation ; reconstruire au changement d’année pour actualiser aussi le HTML statique.
 - Aucun secret ou fichier `.env` n’est nécessaire.
