@@ -315,3 +315,50 @@ test("les animations révèlent le contenu et respectent la réduction de mouvem
   const card = page.locator(".location-card");
   await expect(card).toHaveCSS("opacity", "1");
 });
+
+test("signature Shopin30 et lien WhatsApp distinct de la boutique", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const credit = page.locator(".footer-credit");
+  await credit.scrollIntoViewIfNeeded();
+  await expect(credit).toContainText("Conçu par Shopin30");
+  const link = credit.getByRole("link", { name: /Contacter Shopin30/ });
+  await expect(link).toBeVisible();
+  await expect(link).toContainText("+225 05 01 30 33 43");
+  const url = new URL(await link.getAttribute("href"));
+  expect(url.hostname).toBe("wa.me");
+  expect(url.pathname).toBe("/2250501303343");
+  expect(url.searchParams.get("text")).toContain("Bonjour Shopin30");
+  await expect(page.locator('#contact a[href*="2250501303343"]')).toHaveCount(
+    0,
+  );
+  await expect(
+    page.locator('#whatsapp-panel a[href*="2250501303343"]'),
+  ).toHaveCount(0);
+});
+
+test("démonstration de netteté : curseur, remise à zéro et avertissement", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const section = page.getByRole("region", {
+    name: "Le plaisir de voir chaque détail.",
+  });
+  const range = section.getByRole("slider");
+  await expect(range).toHaveValue("35");
+  await expect(section).toContainText("Il ne mesure pas votre vision");
+  await section.getByRole("button", { name: "Voir l’image nette" }).click();
+  await expect(range).toHaveValue("100");
+  await expect(section.locator(".vision-photo-filter")).toHaveCSS(
+    "filter",
+    "blur(0px)",
+  );
+  await range.focus();
+  await page.keyboard.press("ArrowLeft");
+  await expect(range).toHaveValue("99");
+  await section
+    .getByRole("button", { name: "Réinitialiser l’effet de netteté" })
+    .click();
+  await expect(range).toHaveValue("35");
+});

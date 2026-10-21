@@ -1,3 +1,13 @@
+// Contact du concepteur, distinct des contacts de la boutique.
+export const creator = {
+  name: "Shopin30",
+  phoneLabel: "+225 05 01 30 33 43",
+  whatsappUrl:
+    "https://wa.me/2250501303343?text=" +
+    encodeURIComponent(
+      "Bonjour Shopin30, je vous contacte depuis le site de Lunette Store.",
+    ),
+};
 export const shop = {
   name: "Lunette Store",
   address: "Gogoguhe, à côté du Collège Imane, Daloa",

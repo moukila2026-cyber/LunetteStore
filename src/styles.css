@@ -220,19 +220,6 @@ p {
 .mobile-menu {
   display: none;
 }
-.hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 660px;
-  max-width: 1800px;
-  margin: auto;
-}
-.hero-copy {
-  padding: 70px 8% 44px 10.4%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 .eyebrow {
   font-size: 10px;
   letter-spacing: 2px;
@@ -246,27 +233,6 @@ p {
   width: 23px;
   height: 1px;
   background: #9c8356;
-}
-.hero h1 {
-  font-size: clamp(49px, 4.9vw, 76px);
-  line-height: 1.09;
-  letter-spacing: -2.8px;
-  margin: 28px 0;
-}
-.hero h1 em {
-  color: #937d55;
-}
-.hero-description {
-  font-size: 15px;
-  line-height: 1.9;
-  color: var(--muted);
-}
-.hero-actions {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 23px;
-  margin-top: 32px;
 }
 .button {
   display: inline-flex;
@@ -306,79 +272,6 @@ p {
 }
 .text-link:hover {
   gap: 22px;
-}
-.hero-address {
-  display: flex;
-  gap: 9px;
-  align-items: center;
-  color: #64635a;
-  font-size: 12px;
-  margin-top: 48px;
-}
-.hero-address:hover {
-  color: var(--ink);
-}
-.hero-visual {
-  position: relative;
-  min-height: 660px;
-  overflow: hidden;
-  background: #d2c2a8;
-}
-.hero-visual > img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  position: absolute;
-  object-position: 50% 43%;
-}
-.hero-vertical {
-  position: absolute;
-  right: 20px;
-  top: 30px;
-  writing-mode: vertical-rl;
-  color: white;
-  font-size: 8px;
-  letter-spacing: 2.5px;
-  text-shadow: 0 1px 4px #444;
-}
-.hero-caption {
-  position: absolute;
-  bottom: 47px;
-  left: 35px;
-  right: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: white;
-}
-.hero-caption > span {
-  font-size: 11px;
-  line-height: 1.8;
-  letter-spacing: 2px;
-  background: #f7f6f1e8;
-  color: var(--ink);
-  padding: 13px 18px;
-}
-.hero-caption > a {
-  width: 50px;
-  height: 50px;
-  display: grid;
-  place-items: center;
-  border: 1px solid #ffffff8a;
-  border-radius: 50%;
-  background: #17171375;
-  transition: background 0.2s;
-}
-.hero-caption > a:hover {
-  background: #17171366;
-}
-.hero-photo-note {
-  font-size: 9px;
-  position: absolute;
-  bottom: 15px;
-  right: 24px;
-  color: #fff;
-  text-shadow: 0 1px 5px #171713;
 }
 .values-strip {
   display: flex;
@@ -638,55 +531,6 @@ p {
 }
 .services-wrap {
   background: var(--cream);
-}
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--border);
-}
-.service {
-  padding: 30px 32px 32px 0;
-  border-bottom: 1px solid var(--border);
-  position: relative;
-}
-.service:not(:nth-child(3n + 1)) {
-  padding-left: 32px;
-}
-.service:not(:nth-child(3n))::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 30px;
-  bottom: 30px;
-  width: 1px;
-  background: var(--border);
-}
-.service-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 27px;
-}
-.service-top > svg {
-  color: #8b744b;
-}
-.service-top > span {
-  font-size: 10px;
-  color: #706b61;
-  letter-spacing: 2px;
-}
-.service h3 {
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 1.4px;
-  margin-bottom: 12px;
-}
-.service p {
-  color: var(--muted);
-  font-size: 14px;
-  max-width: 320px;
-  line-height: 1.8;
 }
 .services-note {
   font-size: 11px;
@@ -1073,39 +917,6 @@ p {
   font-size: 11px;
   color: var(--muted);
 }
-.hero-copy > * {
-  animation: enter 0.8s both;
-}
-.hero-copy > :nth-child(2) {
-  animation-delay: 0.08s;
-}
-.hero-copy > :nth-child(3) {
-  animation-delay: 0.15s;
-}
-.hero-copy > :nth-child(4) {
-  animation-delay: 0.23s;
-}
-@keyframes enter {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@media (min-width: 1600px) {
-  .hero-copy {
-    padding-left: 12%;
-  }
-  .hero {
-    min-height: 760px;
-  }
-  .hero-visual {
-    min-height: 760px;
-  }
-}
 @media (max-width: 1150px) {
   .desktop-nav {
     gap: 20px;
@@ -1115,32 +926,6 @@ p {
   }
   .brand > span:first-child {
     font-size: 23px;
-  }
-  .hero-copy {
-    padding-left: 8%;
-    padding-right: 6%;
-  }
-  .hero {
-    min-height: 600px;
-  }
-  .hero-visual {
-    min-height: 600px;
-  }
-  .hero h1 {
-    font-size: 58px;
-  }
-  .hero-actions {
-    gap: 18px;
-  }
-  .hero-actions .button {
-    padding: 15px 17px;
-  }
-  .hero-actions .text-link {
-    font-size: 11px;
-  }
-  .hero-address {
-    margin-top: 33px;
-    font-size: 10px;
   }
   .values-strip {
     padding-left: 5%;
@@ -1209,34 +994,6 @@ p {
     font-size: 8px;
     letter-spacing: 4px;
   }
-  .hero h1 {
-    font-size: 50px;
-  }
-  .hero-copy {
-    padding-top: 45px;
-    padding-bottom: 35px;
-  }
-  .hero-description {
-    font-size: 14px;
-  }
-  .hero .eyebrow {
-    font-size: 8px;
-    letter-spacing: 1.6px;
-  }
-  .hero-actions {
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 25px;
-    gap: 15px;
-  }
-  .hero-address {
-    align-items: flex-start;
-    line-height: 1.6;
-  }
-  .hero,
-  .hero-visual {
-    min-height: 580px;
-  }
   .section-heading {
     gap: 25px;
   }
@@ -1280,18 +1037,6 @@ p {
   }
   .story-copy > p:not(.eyebrow) {
     font-size: 12px;
-  }
-  .service {
-    padding-right: 22px;
-  }
-  .service:not(:nth-child(3n + 1)) {
-    padding-left: 22px;
-  }
-  .service p {
-    font-size: 13px;
-  }
-  .service h3 {
-    font-size: 11px;
   }
   .contact-grid {
     gap: 35px;
@@ -1407,74 +1152,6 @@ p {
     font-size: 13px;
     border: 0;
     padding-top: 20px;
-  }
-  .hero {
-    grid-template-columns: 1fr;
-    min-height: 0;
-  }
-  .hero-copy {
-    padding: 45px 7% 35px;
-  }
-  .hero .eyebrow {
-    font-size: 9px;
-    letter-spacing: 1.7px;
-  }
-  .hero h1 {
-    font-size: clamp(46px, 8.5vw, 62px);
-    letter-spacing: -2px;
-    line-height: 1.16;
-    margin: 22px 0;
-  }
-  .desktop-break {
-    display: none;
-  }
-  .hero-description {
-    font-size: 14px;
-    max-width: 400px;
-  }
-  .hero-actions {
-    flex-direction: row;
-    gap: 21px;
-    margin-top: 26px;
-    align-items: center;
-  }
-  .hero-actions .button {
-    padding: 15px 17px;
-    font-size: 11px;
-  }
-  .hero-address {
-    margin-top: 27px;
-    font-size: 11px;
-    align-items: center;
-  }
-  .hero-visual {
-    min-height: 0;
-    aspect-ratio: 1.12;
-  }
-  .hero-visual > img {
-    object-position: 50% 35%;
-  }
-  .hero-caption {
-    left: 26px;
-    right: 26px;
-    bottom: 30px;
-  }
-  .hero-caption > span {
-    font-size: 9px;
-    letter-spacing: 1.8px;
-  }
-  .hero-caption > a {
-    width: 42px;
-    height: 42px;
-  }
-  .hero-photo-note {
-    bottom: 10px;
-    font-size: 8px;
-  }
-  .hero-vertical {
-    top: 21px;
-    right: 14px;
-    font-size: 7px;
   }
   .values-strip {
     padding: 23px 6%;
@@ -1627,41 +1304,6 @@ p {
   .story-copy .text-link {
     font-size: 12px;
   }
-  .services-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .service {
-    padding: 25px 18px 25px 0 !important;
-  }
-  .service:nth-child(even) {
-    padding-left: 18px !important;
-    padding-right: 0 !important;
-  }
-  .service::after {
-    display: none;
-  }
-  .service:nth-child(odd)::after {
-    display: block;
-    top: 25px;
-    bottom: 25px;
-  }
-  .service-top {
-    margin-bottom: 19px;
-  }
-  .service-top > svg {
-    width: 27px;
-  }
-  .service-top > span {
-    font-size: 9px;
-  }
-  .service h3 {
-    font-size: 12px;
-    letter-spacing: 0.8px;
-  }
-  .service p {
-    font-size: 13px;
-    line-height: 1.8;
-  }
   .services-note {
     font-size: 11px;
     line-height: 1.8;
@@ -1809,28 +1451,6 @@ p {
   }
 }
 @media (max-width: 370px) {
-  .hero-copy {
-    padding-left: 6%;
-    padding-right: 6%;
-  }
-  .hero h1 {
-    font-size: 43px;
-  }
-  .hero-actions {
-    gap: 14px;
-  }
-  .hero-actions .button {
-    font-size: 10px;
-    padding: 14px 12px;
-    gap: 10px;
-  }
-  .hero-actions .text-link {
-    font-size: 10px;
-    gap: 8px;
-  }
-  .hero-address {
-    font-size: 9px;
-  }
   .product-copy h3 {
     font-size: 16px;
   }

@@ -45,76 +45,6 @@
 .text-link:hover > svg {
   transform: translate(3px, -3px);
 }
-.hero-copy {
-  position: relative;
-  padding-top: 92px;
-  padding-bottom: 60px;
-}
-.hero-edition {
-  position: absolute;
-  left: 10.4%;
-  top: 26px;
-  font-size: 9px;
-  letter-spacing: 2.3px;
-  color: #716b5c;
-}
-.hero-copy::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 28%;
-  height: 1px;
-  background: var(--gold);
-}
-.hero-visual {
-  min-height: 720px;
-}
-.hero-visual > img {
-  animation: hero-settle 1.6s cubic-bezier(0.2, 0.6, 0.3, 1) both;
-}
-.hero-inspiration {
-  position: absolute;
-  top: 28px;
-  left: 28px;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  max-width: calc(100% - 75px);
-  padding: 10px 17px 10px 10px;
-  background: #f7f6f1ec;
-  backdrop-filter: blur(12px);
-  border: 1px solid #fff8;
-  box-shadow: 0 8px 32px #17171310;
-  transition:
-    transform 0.4s,
-    background 0.4s;
-}
-.hero-inspiration:hover {
-  transform: translateY(-4px);
-  background: var(--cream);
-}
-.hero-inspiration img {
-  width: 78px;
-  height: 64px;
-  object-fit: cover;
-}
-.hero-inspiration > span {
-  font-size: 8px;
-  letter-spacing: 1.2px;
-  line-height: 1.8;
-}
-.hero-inspiration strong {
-  display: block;
-  font-family: "Playfair Display", Georgia, serif;
-  letter-spacing: 0;
-  font-size: 15px;
-  font-weight: 400;
-}
-.hero-inspiration > svg {
-  margin-left: 9px;
-}
 .values-strip {
   background: var(--cream);
   padding-top: 30px;
@@ -349,18 +279,6 @@
   bottom: 20px;
   color: #ffffff04;
   pointer-events: none;
-}
-.service {
-  transition: background 0.35s;
-}
-.service:hover {
-  background: #ebe7dc55;
-}
-.service-top > svg {
-  transition: transform 0.4s var(--ease-editorial);
-}
-.service:hover .service-top > svg {
-  transform: translateY(-4px) rotate(-5deg);
 }
 .brand-manifesto {
   position: relative;
@@ -699,14 +617,6 @@
   opacity: 0;
   transform: translateY(28px);
 }
-@keyframes hero-settle {
-  from {
-    transform: scale(1.055);
-  }
-  to {
-    transform: scale(1);
-  }
-}
 @keyframes panel-enter {
   from {
     opacity: 0;
@@ -717,30 +627,7 @@
     transform: translateY(0) scale(1);
   }
 }
-@media (min-width: 1600px) {
-  .hero-visual {
-    min-height: 800px;
-  }
-}
 @media (max-width: 1150px) {
-  .hero-visual {
-    min-height: 670px;
-  }
-  .hero-edition {
-    left: 8%;
-  }
-  .hero-inspiration {
-    top: 20px;
-    left: 20px;
-    padding: 8px;
-    gap: 10px;
-  }
-  .hero-inspiration > svg {
-    display: none;
-  }
-  .hero-inspiration strong {
-    font-size: 13px;
-  }
   .editorial-grid {
     gap: 30px;
   }
@@ -774,16 +661,6 @@
   }
 }
 @media (max-width: 900px) {
-  .hero-inspiration img {
-    height: 52px;
-    width: 60px;
-  }
-  .hero-inspiration > span {
-    font-size: 7px;
-  }
-  .hero-inspiration strong {
-    font-size: 11px;
-  }
   .editorial-heading {
     flex-direction: column;
     align-items: flex-start;
@@ -815,40 +692,6 @@
   }
 }
 @media (max-width: 700px) {
-  .hero-copy {
-    padding-top: 50px;
-    padding-bottom: 37px;
-  }
-  .hero-edition {
-    display: none;
-  }
-  .hero-visual {
-    min-height: 0;
-    aspect-ratio: 0.93;
-  }
-  .hero-inspiration {
-    top: 18px;
-    left: 18px;
-    gap: 10px;
-    padding: 7px 12px 7px 7px;
-  }
-  .hero-inspiration img {
-    height: 47px;
-    width: 57px;
-  }
-  .hero-inspiration strong {
-    font-size: 12px;
-  }
-  .hero-inspiration > span {
-    font-size: 6px;
-    letter-spacing: 0.8px;
-  }
-  .hero-caption > span {
-    font-size: 8px;
-    line-height: 1.8;
-    padding: 12px 14px;
-    letter-spacing: 1.3px;
-  }
   .values-strip {
     padding: 25px 6%;
   }

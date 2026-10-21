@@ -8,7 +8,18 @@ Site vitrine premium, responsive et statique pour Lunette Store à Gogoguhe, à 
 
 Projet Vercel : `lunette-store-daloa`, compte `moukila`. Déploiement de production réellement effectué et état `READY` confirmé ; le contenu public a été récupéré sans authentification le 21 octobre 2026. Les sources sont sur la branche `arena/6abd0035-lunettestore`, publiée sur GitHub, sans fusion dans `main`.
 
-Vérifications exécutées : compilation et pré-rendu réussis, **24 tests Playwright réussis** (12 scénarios déclinés en bureau et mobile), zéro violation dans les analyses axe automatisées effectuées, `npm audit` sans vulnérabilité signalée et formatage vérifié. Les tests de fonctionnement ont été exécutés sur la version de production locale ; la vérification distante porte sur la disponibilité et le contenu public.
+Vérifications exécutées : compilation et pré-rendu réussis, **28 tests Playwright réussis** (14 scénarios déclinés en bureau et mobile), zéro violation dans les analyses axe automatisées effectuées, `npm audit` sans vulnérabilité signalée et formatage vérifié. Les tests de fonctionnement ont été exécutés sur la version de production locale ; la vérification distante porte sur la disponibilité et le contenu public.
+
+## Parcours Signature — inspiration de structure et crédit Shopin30
+
+L’analyse de la structure de **monart.ci** et les choix d’adaptation sont documentés dans `docs/DIRECTION-ARTISTIQUE.md`. Les visuels, textes, coordonnées et code du site de référence ne sont pas copiés ; aucune assurance, qualification, équipement ou horaire non communiqué n’a été ajouté.
+
+- Accueil photographique pleine largeur avec boutons collection/WhatsApp et rappel conditionnel du test gratuit.
+- Services photographiques présentés avant la galerie, puis expérience de netteté et parcours de visite en trois étapes.
+- Le curseur de netteté est **un effet graphique uniquement**, sans mesure, diagnostic ou recommandation de correction ; il ne stocke aucune donnée.
+- Invitation finale à contacter la boutique.
+- Pied de page : **Conçu par Shopin30 · +225 05 01 30 33 43**, avec lien WhatsApp `https://wa.me/2250501303343` et message prérempli. Ce contact du concepteur est distinct des numéros de la boutique.
+- Réglages du concepteur : objet `creator` dans `src/data.js`. Styles : `src/signature.css`. Composants : `Hero`, `VisionExperience`, `VisitJourney`, `ClosingInvitation`.
 
 ## Édition Atelier — enrichissement visuel
 
@@ -53,15 +64,20 @@ Les images nécessaires sont déjà dans `public/images/`. Il n’est pas néces
 
 ```text
 src/
-  App.jsx                  Sections accueil, marque et pied de page
+  App.jsx                  Composition des sections, marque et pied de page
   data.js                  Coordonnées, navigation, catégories, textes et images
   main.jsx                 Polices locales et hydratation React
   styles.css               Identité visuelle et responsive
   atelier.css              Finition éditoriale, animations et widget flottant
+  signature.css            Accueil immersif, services, expérience, parcours et crédit
   components/
     Header.jsx             Navigation bureau/mobile
     Gallery.jsx            Catalogue, filtres et visionneuse
-    Services.jsx           Les six prestations
+    Services.jsx           Les six prestations photographiques
+    Hero.jsx               Accueil photographique et contacts
+    VisionExperience.jsx   Démonstration graphique, non médicale
+    VisitJourney.jsx       Parcours de visite en trois étapes
+    ClosingInvitation.jsx  Dernier appel à la prise de contact
     Editorial.jsx          Carnet de style photographique
     WhatsAppWidget.jsx     Panneau de contact flottant
     VisualEffects.jsx      Révélations et progression de lecture
@@ -87,7 +103,7 @@ Les douze visuels (trois portraits, sept inspirations et deux natures mortes éd
 2. Remplacer `public/images/NOM-640.webp` et `NOM-1280.webp` en conservant les noms, ou modifier `image` et `alt` dans `src/data.js`.
 3. Pour utiliser l’outil d’optimisation, créer `source-assets/` puis y placer : `editorial.png`, `timeless.png`, `modern.png`, `bold.png`, `women.png`, `men.png`, `kids.png`, `care.png`, `editorial-man.png`, `editorial-woman.png`, `sunlight.png`, `craft.png`. Exécuter `npm run images`.
 4. Adapter les textes, tailles et cadrages si les photos réelles ont d’autres proportions.
-5. Ne retirer les mentions « illustratif / généré par IA » que des visuels effectivement remplacés. Elles figurent dans `App.jsx`, `Gallery.jsx`, `Editorial.jsx` et dans les textes alternatifs de `data.js`.
+5. Ne retirer les mentions « illustratif / généré par IA » que des visuels effectivement remplacés. Elles figurent dans `App.jsx`, `Hero.jsx`, `Services.jsx`, `VisionExperience.jsx`, `Gallery.jsx`, `Editorial.jsx` et dans les textes alternatifs de `data.js`.
 
 Les originaux volumineux de travail ne sont pas versionnés (`source-assets/` ignoré). Les WebP livrés suffisent au déploiement. Les polices sont distribuées sous SIL Open Font License ; les licences sont incluses dans leurs paquets npm. Lucide est distribué sous licence ISC.
 
@@ -95,7 +111,7 @@ Les originaux volumineux de travail ne sont pas versionnés (`source-assets/` ig
 
 - Coordonnées, messages WhatsApp, adresse Maps : `src/data.js`.
 - Services et conditions commerciales : `src/components/Services.jsx`.
-- Palette, typographies, espacements : variables et règles dans `src/styles.css` et `src/atelier.css`.
+- Palette, typographies, espacements : variables et règles dans `src/styles.css`, `src/atelier.css` et `src/signature.css`.
 - Panneau WhatsApp : `src/components/WhatsAppWidget.jsx` ; numéros et message commun dans `src/data.js`.
 - SEO et données structurées : `index.html`. Lors d’un changement de coordonnées, modifier aussi le JSON-LD et le texte de secours sans JavaScript.
 - Année : calculée automatiquement. Le pré-rendu est actualisé à chaque compilation ; reconstruire au changement d’année pour actualiser aussi le HTML statique.

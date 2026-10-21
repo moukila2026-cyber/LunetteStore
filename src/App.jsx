@@ -1,11 +1,8 @@
-import {
-  ArrowRight,
-  ArrowUpRight,
-  MapPin,
-  Glasses,
-  HeartHandshake,
-  Sparkles,
-} from "lucide-react";
+import { ArrowUpRight, Glasses, HeartHandshake, Sparkles } from "lucide-react";
+import Hero from "./components/Hero";
+import VisionExperience from "./components/VisionExperience";
+import VisitJourney from "./components/VisitJourney";
+import ClosingInvitation from "./components/ClosingInvitation";
 import Header from "./components/Header";
 import WhatsAppWidget from "./components/WhatsAppWidget";
 import Editorial from "./components/Editorial";
@@ -13,8 +10,13 @@ import VisualEffects from "./components/VisualEffects";
 import Gallery from "./components/Gallery";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
-import { Brand, Picture, ExternalLink } from "./components/Primitives";
-import { navigation, shop } from "./data";
+import {
+  Brand,
+  Picture,
+  ExternalLink,
+  WhatsAppIcon,
+} from "./components/Primitives";
+import { navigation, shop, creator } from "./data";
 export default function App() {
   return (
     <>
@@ -24,84 +26,7 @@ export default function App() {
       <VisualEffects />
       <Header />
       <main id="main">
-        <section id="accueil" className="hero">
-          <div className="hero-copy">
-            <span className="hero-edition" aria-hidden="true">
-              LE REGARD EST UNE SIGNATURE.
-            </span>
-            <p className="eyebrow">
-              <span /> VOTRE OPTICIEN À DALOA
-            </p>
-            <h1>
-              Voyez le monde.
-              <br />
-              <em>
-                À votre
-                <br className="desktop-break" /> manière.
-              </em>
-            </h1>
-            <p className="hero-description">
-              La monture qui révèle votre personnalité.
-              <br className="desktop-break" /> Le confort visuel qui accompagne
-              vos journées.
-              <br className="desktop-break" /> Découvrez l’univers Lunette
-              Store.
-            </p>
-            <div className="hero-actions">
-              <a className="button button-dark" href="#montures">
-                Explorer les montures <ArrowUpRight size={18} />
-              </a>
-              <a className="text-link" href="#contact">
-                Nous rendre visite <ArrowRight size={17} />
-              </a>
-            </div>
-            <a className="hero-address" href="#contact">
-              <MapPin size={17} />
-              <span>Gogoguhe, à côté du Collège Imane, Daloa</span>
-            </a>
-          </div>
-          <div className="hero-visual">
-            <Picture
-              name="editorial"
-              alt="Portrait éditorial illustratif d’une femme portant des lunettes de soleil écaille"
-              hero
-            />
-            <a
-              className="hero-inspiration"
-              href="#montures"
-              aria-label="Découvrir nos inspirations optiques"
-            >
-              <Picture
-                name="modern"
-                alt="Illustration d’une monture optique fine dorée"
-              />
-              <span>
-                LE DÉTAIL QUI CHANGE TOUT
-                <strong>Votre prochaine signature.</strong>
-              </span>
-              <ArrowUpRight size={20} />
-            </a>
-            <span className="hero-vertical">
-              LUNETTE STORE — L’ART DE VOIR AUTREMENT
-            </span>
-            <div className="hero-caption">
-              <span>
-                LE STYLE SE VOIT.
-                <br />
-                LA CONFIANCE SE RESSENT.
-              </span>
-              <a
-                href="#montures"
-                aria-label="Découvrir nos inspirations de montures"
-              >
-                <ArrowUpRight size={27} strokeWidth={1.2} />
-              </a>
-            </div>
-            <span className="hero-photo-note">
-              Visuel éditorial créé par IA
-            </span>
-          </div>
-        </section>
+        <Hero />
         <div className="values-strip">
           <div>
             <Glasses size={23} strokeWidth={1.25} />
@@ -118,7 +43,10 @@ export default function App() {
             <span>Une belle paire, à votre portée</span>
           </div>
         </div>
+        <Services />
         <Gallery />
+        <VisionExperience />
+        <VisitJourney />
         <Editorial />
         <section id="boutique" className="brand-story">
           <div className="story-image">
@@ -161,7 +89,6 @@ export default function App() {
             </a>
           </div>
         </section>
-        <Services />
         <div className="brand-manifesto">
           <span className="manifesto-star">✳</span>
           <p>
@@ -172,6 +99,7 @@ export default function App() {
           <span className="eyebrow">LUNETTE STORE · DALOA</span>
         </div>
         <Contact />
+        <ClosingInvitation />
       </main>
       <footer className="footer">
         <div className="footer-main">
@@ -226,6 +154,22 @@ export default function App() {
           </span>
           <span>Le style vous appartient.</span>
           <a href="#accueil">Retour en haut ↑</a>
+        </div>
+        <div className="footer-credit">
+          <span>
+            Conçu par <strong>Shopin30</strong>
+          </span>
+          <span className="footer-credit-divider" aria-hidden="true">
+            ·
+          </span>
+          <ExternalLink
+            href={creator.whatsappUrl}
+            aria-label="Contacter Shopin30 sur WhatsApp au +225 05 01 30 33 43"
+          >
+            <WhatsAppIcon size={17} />
+            <span>{creator.phoneLabel}</span>
+            <ArrowUpRight size={15} />
+          </ExternalLink>
         </div>
       </footer>
       <WhatsAppWidget />

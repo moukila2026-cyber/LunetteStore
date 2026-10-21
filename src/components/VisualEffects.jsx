@@ -32,7 +32,7 @@ export default function VisualEffects() {
       );
       document
         .querySelectorAll(
-          ".section-heading, .collection-card, .service, .editorial-item, .editorial-heading, .story-copy, .contact-details, .location-card",
+          ".section-heading, .collection-card, .service-card, .vision-copy, .journey-steps > li, .editorial-item, .editorial-heading, .story-copy, .contact-details, .location-card",
         )
         .forEach((element, index) => {
           if (element.getBoundingClientRect().top > window.innerHeight) {
