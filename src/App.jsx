@@ -1,3 +1,5 @@
+import ShopPhoto from "./components/ShopPhoto";
+import Campaigns from "./components/Campaigns";
 import { ArrowUpRight, Glasses, HeartHandshake, Sparkles } from "lucide-react";
 import Hero from "./components/Hero";
 import VisionExperience from "./components/VisionExperience";
@@ -10,12 +12,7 @@ import VisualEffects from "./components/VisualEffects";
 import Gallery from "./components/Gallery";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
-import {
-  Brand,
-  Picture,
-  ExternalLink,
-  WhatsAppIcon,
-} from "./components/Primitives";
+import { Brand, ExternalLink, WhatsAppIcon } from "./components/Primitives";
 import { navigation, shop, creator } from "./data";
 export default function App() {
   return (
@@ -49,18 +46,15 @@ export default function App() {
         <VisitJourney />
         <Editorial />
         <section id="boutique" className="brand-story">
-          <div className="story-image">
-            <Picture
-              name="craft"
-              alt="Détail illustratif d’une monture écaille ambrée sur un socle de travertin"
-            />
+          <div className="story-image authentic-shop-image">
+            <ShopPhoto />
             <div className="story-image-label">
-              LE SENS DU DÉTAIL.
+              BIENVENUE CHEZ VOUS.
               <br />
-              L’ESSENTIEL DU STYLE.
+              BIENVENUE CHEZ LUNETTE STORE.
             </div>
             <span className="story-photo-note">
-              Visuel illustratif créé par IA
+              L’intérieur de notre boutique · Daloa
             </span>
           </div>
           <div className="story-copy">
@@ -89,6 +83,7 @@ export default function App() {
             </a>
           </div>
         </section>
+        <Campaigns />
         <div className="brand-manifesto">
           <span className="manifesto-star">✳</span>
           <p>
@@ -119,6 +114,7 @@ export default function App() {
                   {label}
                 </a>
               ))}
+              <a href="#actualites">Nos actualités</a>
             </nav>
           </div>
           <div>

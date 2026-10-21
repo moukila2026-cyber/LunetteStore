@@ -8,6 +8,7 @@ import "@fontsource/playfair-display/latin-400-italic.css";
 import "./styles.css";
 import "./atelier.css";
 import "./signature.css";
+import "./campaigns.css";
 import App from "./App";
 const container = document.getElementById("root");
 const app = (

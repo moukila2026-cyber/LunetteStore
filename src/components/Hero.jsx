@@ -1,5 +1,6 @@
+import ShopPhoto from "./ShopPhoto";
 import { ArrowDown, ArrowUpRight, Eye, MapPin } from "lucide-react";
-import { Picture, ExternalLink, WhatsAppIcon } from "./Primitives";
+import { ExternalLink, WhatsAppIcon } from "./Primitives";
 import { shop, whatsappLink } from "../data";
 
 export default function Hero() {
@@ -10,12 +11,7 @@ export default function Hero() {
       aria-labelledby="hero-title"
     >
       <div className="signature-hero-image">
-        <Picture
-          name="sunlight"
-          alt="Composition illustrative de lunettes écaille dans une lumière chaude"
-          hero
-          sizes="100vw"
-        />
+        <ShopPhoto hero sizes="100vw" />
       </div>
       <div className="signature-hero-shade" aria-hidden="true" />
       <div className="signature-hero-content">
@@ -74,7 +70,7 @@ export default function Hero() {
         <p>
           * Conditions et modalités à confirmer en boutique.
           <br />
-          <span>Visuel illustratif généré par IA.</span>
+          <span>Photo de notre boutique à Daloa.</span>
         </p>
       </div>
     </section>

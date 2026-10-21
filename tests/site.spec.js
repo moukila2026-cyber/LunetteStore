@@ -383,3 +383,135 @@ test("logo officiel dans l’en-tête et le pied de page, proportions conservée
     );
   }
 });
+
+test("photo réelle de la boutique sur l’accueil et dans la présentation", async ({
+  page,
+  request,
+}) => {
+  await page.goto("/");
+  const heroPhoto = page.locator("#accueil img");
+  await expect(heroPhoto).toHaveAttribute(
+    "src",
+    "/media/shop/interieur-1080.webp",
+  );
+  await expect(heroPhoto).toHaveAttribute("fetchpriority", "high");
+  await expect(heroPhoto).toHaveAttribute("alt", /Intérieur de Lunette Store/);
+  await expect(page.locator("#accueil")).toContainText(
+    "Photo de notre boutique à Daloa.",
+  );
+  await expect(page.locator("#accueil")).not.toContainText("généré par IA");
+  await expect(page.locator("#boutique img")).toHaveAttribute(
+    "src",
+    "/media/shop/interieur-1080.webp",
+  );
+  await expect(page.locator("#boutique img")).toHaveCSS(
+    "object-fit",
+    "contain",
+  );
+  expect(
+    (await request.get("/media/originals/boutique-interieur.jpg")).status(),
+  ).toBe(200);
+});
+
+test("quatre affiches, détails, agrandissement et navigation au clavier", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator(".campaign-card")).toHaveCount(4);
+  const heights = await page
+    .locator(".campaign-artwork")
+    .evaluateAll((items) =>
+      items.map((item) => item.getBoundingClientRect().height),
+    );
+  expect(Math.max(...heights) - Math.min(...heights)).toBeLessThan(1);
+  for (const image of await page.locator(".campaign-artwork img").all()) {
+    await expect(image).toHaveCSS("object-fit", "contain");
+  }
+  const trigger = page.getByRole("button", {
+    name: "Agrandir l’affiche : JEU-CONCOURS",
+    exact: true,
+  });
+  await trigger.click();
+  const dialog = page.getByRole("dialog");
+  await expect(dialog).toBeVisible();
+  await expect(dialog).toContainText("sans année précisée");
+  await expect(dialog).toContainText(
+    "Aucun concours ni tirage n’est organisé sur ce site.",
+  );
+  const link = dialog.getByRole("link", {
+    name: /Se renseigner sur le concours/,
+  });
+  const url = new URL(await link.getAttribute("href"));
+  expect(url.pathname).toBe("/2250101162137");
+  expect(url.searchParams.get("text")).toContain("Est-il encore en cours");
+  for (let n = 0; n < 8; n++) {
+    await page.keyboard.press("Tab");
+    expect(
+      await page.evaluate(() => !!document.activeElement.closest("dialog")),
+    ).toBe(true);
+  }
+  await page.keyboard.press("ArrowRight");
+  await expect(page.locator("#campaign-dialog-title")).toHaveText(
+    "Un premier pas pour votre vue.",
+  );
+  await expect(
+    dialog.getByRole("link", { name: /Demander un rendez-vous/ }),
+  ).toBeVisible();
+  await page.keyboard.press("ArrowRight");
+  await expect(dialog).toContainText(
+    "Aucune réponse ni donnée de santé n’est collectée.",
+  );
+  await page.keyboard.press("ArrowRight");
+  await expect(dialog).toContainText(
+    "Il n’annonce pas de prestation de dépistage du cancer",
+  );
+  await page.keyboard.press("Escape");
+  await expect(dialog).not.toBeVisible();
+  await expect(trigger).toBeFocused();
+});
+
+test("affiches : ouverture de chacune, fermeture tactile et accessibilité", async ({
+  page,
+}) => {
+  await page.goto("/");
+  for (const title of [
+    "JEU-CONCOURS",
+    "TEST DE VUE OFFERT",
+    "JOURNÉE MONDIALE DE LA VUE",
+    "OCTOBRE ROSE",
+  ]) {
+    await page
+      .getByRole("button", {
+        name: `Agrandir l’affiche : ${title}`,
+        exact: true,
+      })
+      .click();
+    const dialog = page.getByRole("dialog");
+    const poster = dialog.locator("img");
+    await expect
+      .poll(() =>
+        poster.evaluate((img) => img.complete && img.naturalWidth > 0),
+      )
+      .toBe(true);
+    await expect(poster).toHaveCSS("object-fit", "contain");
+    await expect(
+      dialog.getByRole("link", { name: /Ouvrir l’image en grand/ }),
+    ).toHaveAttribute("href", /\.webp$/);
+    const result = await new AxeBuilder({ page })
+      .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
+      .analyze();
+    expect(result.violations).toEqual([]);
+    await page
+      .getByRole("button", { name: "Fermer l’affiche", exact: true })
+      .click();
+    await expect(dialog).not.toBeVisible();
+  }
+  await page
+    .getByRole("button", {
+      name: "Agrandir l’affiche : JEU-CONCOURS",
+      exact: true,
+    })
+    .click();
+  await page.mouse.click(1, 1);
+  await expect(page.getByRole("dialog")).not.toBeVisible();
+});

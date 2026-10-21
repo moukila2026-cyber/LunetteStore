@@ -8,7 +8,22 @@ Site vitrine premium, responsive et statique pour Lunette Store à Gogoguhe, à 
 
 Projet Vercel : `lunette-store-daloa`, compte `moukila`. Déploiement de production réellement effectué et état `READY` confirmé ; le contenu public a été récupéré sans authentification le 21 octobre 2026. Les sources sont sur la branche `arena/6abd0035-lunettestore`, publiée sur GitHub, sans fusion dans `main`.
 
-Vérifications exécutées : compilation et pré-rendu réussis, **30 tests Playwright réussis** (15 scénarios déclinés en bureau et mobile), zéro violation dans les analyses axe automatisées effectuées, `npm audit` sans vulnérabilité signalée et formatage vérifié. Les tests de fonctionnement ont été exécutés sur la version de production locale ; la vérification distante porte sur la disponibilité et le contenu public.
+Vérifications exécutées : compilation et pré-rendu réussis, **36 tests Playwright réussis** (18 scénarios déclinés en bureau et mobile), zéro violation dans les analyses axe automatisées effectuées, `npm audit` sans vulnérabilité signalée et formatage vérifié. Les tests de fonctionnement ont été exécutés sur la version de production locale ; la vérification distante porte sur la disponibilité et le contenu public.
+
+## Photo de la boutique et campagnes fournies
+
+La photo intérieure authentique et les quatre affiches transmises sont conservées dans `public/media/originals/`. Elles ne sont pas présentées comme des images générées par IA.
+
+- **Intérieur** : luminosité, tons moyens et netteté légèrement améliorés, sans génération, suppression ou ajout d’élément. Version WebP 640/1080 px pour le site et JPEG retouché téléchargeable : `public/media/shop/interieur-ameliore.jpg`.
+- La photo réelle est utilisée dans l’accueil et dans « La boutique », où elle est affichée en entier. Elle sert aussi d’image de partage social. Son original est conservé.
+- **Affiches** : jeu-concours, test de vue offert, Journée mondiale de la vue, Octobre rose. Compression WebP, proportions et contenus conservés, sans recadrage des affiches. Aperçus 540 px et fichiers complets 1080 px.
+- La section « Actualités » dispose d’une visionneuse : Échap, flèches, fermeture au clic extérieur, focus contenu dans la fenêtre puis restitué au déclencheur. Un lien permet d’ouvrir chaque affiche en grand pour zoomer.
+- Textes, réserves et messages WhatsApp sont regroupés dans `src/campaigns.js`. Le concours n’est pas présenté comme actif sans confirmation : l’affiche indique « lundi 26 octobre » sans année et sans lien de publication officiel. Aucun formulaire de participation, tirage ou questionnaire médical n’est créé.
+- Les autres visuels IA du catalogue gardent leurs mentions illustratives. La publicité Octobre rose est un message de sensibilisation, pas une annonce de dépistage en boutique.
+
+Pour régénérer les fichiers à partir des originaux : `npm run media`. Traitement reproductible : `scripts/prepare-shop-media.mjs`. Composants : `ShopPhoto.jsx`, `Campaigns.jsx`. Styles : `src/campaigns.css`.
+
+À faire confirmer : droits d’utilisation des affiches et portraits fournis, période et règlement du concours, publication officielle de participation et modalités du test gratuit.
 
 ## Parcours Signature — inspiration de structure et crédit Shopin30
 
@@ -97,7 +112,7 @@ vercel.json                Build, répertoire de sortie et en-têtes HTTP
 
 ### Remplacer les images
 
-Les douze visuels (trois portraits, sept inspirations et deux natures mortes éditoriales) ont été **générés par IA pour ce projet**. Ils ne représentent ni une cliente réelle, ni le stock de la boutique, ni ses locaux. Les mentions illustratives sont visibles sur le site. Ne pas les transformer en preuves de disponibilité.
+Les douze visuels du dossier `public/images/` (trois portraits, sept inspirations et deux natures mortes éditoriales) ont été **générés par IA pour ce projet**. Ils ne représentent ni une cliente réelle, ni le stock de la boutique, ni ses locaux. Les mentions illustratives sont visibles sur le site. Ne pas les transformer en preuves de disponibilité.
 
 1. Obtenir les photographies réelles et les autorisations d’utilisation de la responsable ; obtenir aussi l’accord des personnes reconnaissables.
 2. Remplacer `public/images/NOM-640.webp` et `NOM-1280.webp` en conservant les noms, ou modifier `image` et `alt` dans `src/data.js`.

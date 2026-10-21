@@ -34,7 +34,7 @@ export default function Header() {
   return (
     <>
       <div className="announcement">
-        <span>UN NOUVEAU REGARD SUR VOTRE STYLE</span>
+        <a href="#actualites">LES ACTUALITÉS DE LA BOUTIQUE ↗</a>
         <span className="announcement-place">
           DALOA, CÔTE D’IVOIRE <span className="gold-dot" />
         </span>

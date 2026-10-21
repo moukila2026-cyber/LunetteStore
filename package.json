@@ -13,7 +13,8 @@
     "test": "playwright test",
     "images": "node scripts/optimize-images.mjs",
     "format": "prettier --write src scripts tests *.js *.json *.html README.md",
-    "format:check": "prettier --check src scripts tests *.js *.json *.html README.md"
+    "format:check": "prettier --check src scripts tests *.js *.json *.html README.md",
+    "media": "node scripts/prepare-shop-media.mjs"
   },
   "dependencies": {
     "@fontsource/dm-sans": "^5.2.8",
