@@ -362,3 +362,24 @@ test("démonstration de netteté : curseur, remise à zéro et avertissement", a
     .click();
   await expect(range).toHaveValue("35");
 });
+
+test("logo officiel dans l’en-tête et le pied de page, proportions conservées", async ({
+  page,
+}) => {
+  await page.goto("/");
+  for (const area of ["header", "footer"]) {
+    const logo = page.locator(`${area} .brand-logo`);
+    await logo.scrollIntoViewIfNeeded();
+    await expect(logo).toBeVisible();
+    await expect(logo).toHaveAttribute("src", "/brand/lunette-store.webp");
+    await expect
+      .poll(() => logo.evaluate((img) => img.complete && img.naturalWidth > 0))
+      .toBe(true);
+    const box = await logo.boundingBox();
+    expect(box.width / box.height).toBeCloseTo(569 / 308, 2);
+    await expect(page.locator(`${area} .brand`)).toHaveAttribute(
+      "href",
+      "#accueil",
+    );
+  }
+});

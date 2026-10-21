@@ -8,7 +8,7 @@ Site vitrine premium, responsive et statique pour Lunette Store à Gogoguhe, à 
 
 Projet Vercel : `lunette-store-daloa`, compte `moukila`. Déploiement de production réellement effectué et état `READY` confirmé ; le contenu public a été récupéré sans authentification le 21 octobre 2026. Les sources sont sur la branche `arena/6abd0035-lunettestore`, publiée sur GitHub, sans fusion dans `main`.
 
-Vérifications exécutées : compilation et pré-rendu réussis, **28 tests Playwright réussis** (14 scénarios déclinés en bureau et mobile), zéro violation dans les analyses axe automatisées effectuées, `npm audit` sans vulnérabilité signalée et formatage vérifié. Les tests de fonctionnement ont été exécutés sur la version de production locale ; la vérification distante porte sur la disponibilité et le contenu public.
+Vérifications exécutées : compilation et pré-rendu réussis, **30 tests Playwright réussis** (15 scénarios déclinés en bureau et mobile), zéro violation dans les analyses axe automatisées effectuées, `npm audit` sans vulnérabilité signalée et formatage vérifié. Les tests de fonctionnement ont été exécutés sur la version de production locale ; la vérification distante porte sur la disponibilité et le contenu public.
 
 ## Parcours Signature — inspiration de structure et crédit Shopin30
 
@@ -191,3 +191,11 @@ Cette session travaille exclusivement sur `arena/6abd0035-lunettestore`. Une pub
 - Domaine officiel, réglages de protection Vercel et validation finale des textes et de l’identité visuelle.
 
 Aucune donnée médicale ne doit être demandée via ce site. Les liens WhatsApp et Google Maps quittent le site et relèvent des conditions de ces services tiers.
+
+## Logo officiel fourni
+
+Le logo bordeaux fourni par la boutique remplace le logo typographique dans l’en-tête et le pied de page. Le fichier reçu est conservé, sans modification, dans `public/brand/lunette-store-original.jpg`.
+
+La version affichée, `public/brand/lunette-store.webp` (569 × 308 px), retire uniquement les grandes marges blanches du haut et du bas (recadrage vertical de y=130 à y=437 inclus). Aucun élément n’a été redessiné, recoloré ou étiré ; le cadrage horizontal reste celui du fichier reçu. Le fond blanc est conservé et le pied de page utilise un cartouche blanc pour maintenir le contraste.
+
+Le composant `Brand` dans `src/components/Primitives.jsx` affiche le logo ; ses tailles sont définies en fin de `src/signature.css`. Les données structurées de la boutique pointent également vers ce logo. Une future version vectorielle ou haute définition pourra remplacer cette ressource.

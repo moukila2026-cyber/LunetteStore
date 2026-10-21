@@ -20,12 +20,6 @@
 .header-inner {
   transition: height 0.3s;
 }
-.brand-star {
-  transition: transform 0.7s var(--ease-editorial);
-}
-.brand:hover .brand-star {
-  transform: rotate(90deg);
-}
 .button {
   position: relative;
   overflow: hidden;

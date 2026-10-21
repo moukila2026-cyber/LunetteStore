@@ -6,10 +6,15 @@ export function Brand({ footer = false }) {
       className={`brand ${footer ? "brand-footer" : ""}`}
       aria-label="Lunette Store — Accueil"
     >
-      <span>
-        LUNETTE<span className="brand-star">✳</span>
-      </span>
-      <span className="brand-small">S T O R E</span>
+      <img
+        className="brand-logo"
+        src="/brand/lunette-store.webp"
+        alt="Logo Lunette Store — lunettes et lettrage bordeaux"
+        width="569"
+        height="308"
+        loading={footer ? "lazy" : "eager"}
+        decoding="async"
+      />
     </a>
   );
 }

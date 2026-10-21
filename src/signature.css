@@ -986,3 +986,29 @@
     transition: none !important;
   }
 }
+
+/* Logo officiel fourni par la boutique : proportions et couleurs d’origine. */
+.brand-logo {
+  display: block;
+  width: 138px;
+  height: auto;
+  object-fit: contain;
+}
+.brand-footer {
+  padding: 12px 16px;
+  border-radius: 4px;
+  background: #fff;
+}
+.brand-footer .brand-logo {
+  width: 160px;
+}
+@media (max-width: 900px) {
+  .header .brand-logo {
+    width: 120px;
+  }
+}
+@media (max-width: 700px) {
+  .header .brand-logo {
+    width: 112px;
+  }
+}
