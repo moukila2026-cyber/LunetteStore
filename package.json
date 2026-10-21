@@ -1,0 +1,33 @@
+{
+  "name": "lunette-store-daloa",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build && node scripts/prerender.mjs",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "playwright test",
+    "images": "node scripts/optimize-images.mjs",
+    "format": "prettier --write src scripts tests *.js *.json *.html README.md",
+    "format:check": "prettier --check src scripts tests *.js *.json *.html README.md"
+  },
+  "dependencies": {
+    "@fontsource/dm-sans": "^5.2.8",
+    "@fontsource/playfair-display": "^5.2.8",
+    "lucide-react": "^0.468.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.56.0",
+    "@vitejs/plugin-react": "^5.0.4",
+    "prettier": "^3.9.10",
+    "sharp": "^0.35.5",
+    "vite": "^7.1.10"
+  }
+}
