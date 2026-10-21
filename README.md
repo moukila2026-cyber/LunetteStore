@@ -2,6 +2,14 @@
 
 Site vitrine premium, responsive et statique pour Lunette Store à Gogoguhe, à côté du Collège Imane, Daloa, Côte d’Ivoire.
 
+## Site déployé
+
+**https://lunette-store-daloa.vercel.app**
+
+Projet Vercel : `lunette-store-daloa`, compte `moukila`. Déploiement de production réellement effectué et état `READY` confirmé ; le contenu public a été récupéré sans authentification le 21 octobre 2026. Les sources sont sur la branche `arena/6abd0035-lunettestore`, publiée sur GitHub, sans fusion dans `main`.
+
+Vérifications exécutées : compilation et pré-rendu réussis, **18 tests Playwright réussis** (9 scénarios déclinés en bureau et mobile), zéro violation dans les analyses axe automatisées effectuées, `npm audit` sans vulnérabilité signalée et formatage vérifié. Les tests de fonctionnement ont été exécutés sur la version de production locale ; la vérification distante porte sur la disponibilité et le contenu public.
+
 ## Stack et fonctionnalités
 
 - React 19, Vite 7, CSS moderne, icônes Lucide.
@@ -10,7 +18,7 @@ Site vitrine premium, responsive et statique pour Lunette Store à Gogoguhe, à 
 - Sept inspirations, filtres et visionneuse native `dialog` : clavier, Échap, navigation précédente/suivante, confinement et restauration du focus.
 - Menu mobile, ancres, barre mobile d’appel/WhatsApp et WhatsApp contextuel par style.
 - Liens téléphone, e-mail, deux WhatsApp préremplis et recherche Google Maps par adresse. Aucune coordonnée GPS inventée ni carte tierce chargée automatiquement.
-- Métadonnées françaises et données structurées `Optician`, sans avis, horaires ou certifications fictifs.
+- Métadonnées françaises, URL canonique, sitemap et données structurées `Optician`, sans avis, horaires ou certifications fictifs.
 - Images WebP en deux tailles, chargement différé sauf visuel principal, respect de `prefers-reduced-motion`.
 - Aucun backend, paiement, panier, formulaire médical, outil de suivi ou cookie publicitaire ajouté par l’application.
 
@@ -53,7 +61,7 @@ public/
 scripts/
   optimize-images.mjs      Génération des images 640/1280 px
   prerender.mjs            Pré-rendu statique à la compilation
- tests/site.spec.js        Tests Playwright + axe
+tests/site.spec.js        Tests Playwright + axe
 index.html                 SEO, langue, métadonnées et données structurées
 vercel.json                Build, répertoire de sortie et en-têtes HTTP
 ```
@@ -124,7 +132,7 @@ La configuration est prête dans `vercel.json` :
 5. Vérifier **Settings → Deployment Protection**. Si Vercel Authentication protège les URL de production, la désactiver pour rendre le site public, selon les possibilités du compte. Une URL déployée peut être protégée même si son état est `READY`.
 6. Tester l’URL dans une fenêtre privée sans connexion Vercel.
 7. Ajouter uniquement le domaine validé par la responsable dans Settings → Domains, puis configurer les DNS indiqués par Vercel.
-8. Après choix du domaine officiel, ajouter une URL canonique, `og:url`, une image de partage avec URL absolue et un sitemap basé sur ce domaine. Aucun domaine commercial n’est supposé dans les sources actuelles.
+8. Après choix d’un domaine personnalisé, remplacer l’URL Vercel dans `index.html` (canonique, `og:url`, image de partage et JSON-LD), `public/sitemap.xml` et `public/robots.txt`. L’URL Vercel réellement attribuée est utilisée en attendant ; aucun domaine commercial n’est supposé.
 
 ### Depuis un poste local authentifié
 
