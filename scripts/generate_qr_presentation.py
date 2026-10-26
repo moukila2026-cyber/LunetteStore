@@ -193,7 +193,7 @@ def build_pdf():
     c.drawString(margin, 519, "LUNETTE STORE · OPTIQUE À DALOA")
     c.setFillColor(MUTED)
     c.setFont("LunetteSans", 6.8)
-    c.drawString(margin, 507, "Gogoguhe, à côté du Collège Imane")
+    c.drawString(margin, 507, "Balouzon, non loin du Collège Privé Iman")
 
     # Actual boutique photograph with discreet brand-red frame.
     photo_x, photo_y, photo_w, photo_h = 365, 522, 193, 166
@@ -305,7 +305,7 @@ def build_pdf():
     c.drawString(430, 65, "lunettestore875@gmail.com")
     c.setFillColor(HexColor("#D7CECA"))
     c.setFont("LunetteSans", 5.8)
-    c.drawString(430, 49, "Gogoguhe · à côté du Collège Imane")
+    c.drawString(430, 49, "Balouzon · non loin du Collège Privé Iman")
     c.drawString(430, 36, "Daloa, Côte d’Ivoire")
 
     c.showPage()
