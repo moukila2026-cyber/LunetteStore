@@ -34,7 +34,7 @@ export default function Contact() {
             <div>
               <h3>Retrouvez-nous à Daloa</h3>
               <p>
-                Gogoguhe, à côté du Collège Imane.
+                Balouzon, non loin du Collège Privé Iman.
                 <br />
                 Daloa, Côte d’Ivoire.
               </p>
@@ -112,8 +112,8 @@ export default function Contact() {
           <div className="location-bottom">
             <div>
               <span className="eyebrow">UNE BOUTIQUE, TOUT PRÈS DE VOUS</span>
-              <h3>Lunette Store · Gogoguhe</h3>
-              <p>À côté du Collège Imane</p>
+              <h3>Lunette Store · Balouzon</h3>
+              <p>Non loin du Collège Privé Iman</p>
             </div>
             <ExternalLink href={shop.maps} className="button button-dark">
               Ouvrir Google Maps <ArrowUpRight size={19} />

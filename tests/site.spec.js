@@ -106,8 +106,8 @@ test("coordonnées, WhatsApp prérempli, email et recherche Maps", async ({
       .getByRole("link", { name: /Ouvrir Google Maps/ })
       .getAttribute("href"),
   );
-  expect(maps.searchParams.get("query")).toContain("Gogoguhe");
-  expect(maps.searchParams.get("query")).toContain("Collège Imane");
+  expect(maps.searchParams.get("query")).toContain("Balouzon");
+  expect(maps.searchParams.get("query")).toContain("Collège Privé Iman");
   expect(maps.searchParams.get("query")).toContain("Daloa");
   for (const anchor of await page.locator('a[href^="#"]').all()) {
     const id = await anchor.getAttribute("href");

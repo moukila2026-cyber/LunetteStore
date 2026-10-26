@@ -43,7 +43,7 @@ export default function Hero() {
         </div>
         <a href="#contact" className="signature-hero-address">
           <MapPin size={17} />
-          <span>Gogoguhe, à côté du Collège Imane, Daloa</span>
+          <span>Balouzon, non loin du Collège Privé Iman, Daloa</span>
         </a>
       </div>
       <a className="hero-service-seal" href="#services">

@@ -1,6 +1,6 @@
 # LUNETTE STORE — Daloa
 
-Site vitrine premium, responsive et statique pour Lunette Store à Gogoguhe, à côté du Collège Imane, Daloa, Côte d’Ivoire.
+Site vitrine premium, responsive et statique pour Lunette Store à Balouzon, non loin du Collège Privé Iman, Daloa, Côte d’Ivoire.
 
 ## Site déployé
 
@@ -196,7 +196,7 @@ Cette session travaille exclusivement sur `arena/6abd0035-lunettestore`. Une pub
 
 ## À confirmer avec la responsable avant lancement commercial
 
-- Orthographe définitive de l’adresse « Gogoguhe » et résultat de la recherche Google Maps ; créer/vérifier la fiche établissement si besoin.
+- Confirmation de l’adresse « Balouzon, non loin du Collège Privé Iman » et résultat de la recherche Google Maps ; créer/vérifier la fiche établissement si besoin.
 - Activité des deux numéros, disponibilité sur WhatsApp et réception de l’e-mail.
 - Horaires et jours d’ouverture : volontairement non inventés.
 - Références, disponibilités et photographies réelles ; accord pour conserver les images IA si souhaité.

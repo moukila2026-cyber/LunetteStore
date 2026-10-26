@@ -10,7 +10,7 @@ export const creator = {
 };
 export const shop = {
   name: "Lunette Store",
-  address: "Gogoguhe, à côté du Collège Imane, Daloa",
+  address: "Balouzon, non loin du Collège Privé Iman, Daloa",
   email: "lunettestore875@gmail.com",
   phones: [
     {
@@ -27,7 +27,7 @@ export const shop = {
   maps:
     "https://www.google.com/maps/search/?api=1&query=" +
     encodeURIComponent(
-      "Lunette Store, Gogoguhe, à côté du Collège Imane, Daloa, Côte d’Ivoire",
+      "Lunette Store, Balouzon, non loin du Collège Privé Iman, Daloa, Côte d’Ivoire",
     ),
 };
 export const whatsappLink = (

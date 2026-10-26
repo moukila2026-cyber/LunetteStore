@@ -28,7 +28,7 @@ export const campaigns = [
     summary:
       "Découvrez l’offre de test de vue et contactez la boutique pour organiser votre passage.",
     description:
-      "« Test de vue offert. Faites le point sur votre vue, sans frais. Prenez rendez-vous. » Adresse indiquée : Gogoguhé, à côté du collège Imane, Daloa. Téléphones : 01 01 16 21 37 et 07 13 58 23 57.",
+      "« Test de vue offert. Faites le point sur votre vue, sans frais. Prenez rendez-vous. » Adresse indiquée : Balouzon, non loin du Collège Privé Iman, Daloa. Téléphones : 01 01 16 21 37 et 07 13 58 23 57.",
     notice:
       "Conditions et modalités à confirmer en boutique. Une demande WhatsApp ne confirme pas automatiquement un rendez-vous. Un test de vue ne remplace pas une consultation chez un ophtalmologue.",
     action: "Demander un rendez-vous",

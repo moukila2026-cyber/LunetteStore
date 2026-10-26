@@ -45,8 +45,8 @@ export default function VisitJourney() {
           </div>
           <h3>Retrouvons-nous à Daloa.</h3>
           <p>
-            Rendez-vous à Gogoguhe, à côté du Collège Imane. Les horaires sont à
-            confirmer auprès de la boutique.
+            Rendez-vous à Balouzon, non loin du Collège Privé Iman. Les horaires
+            sont à confirmer auprès de la boutique.
           </p>
           <ExternalLink className="text-link" href={shop.maps}>
             Trouver la boutique <ArrowUpRight size={17} />

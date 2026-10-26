@@ -120,7 +120,7 @@ export default function App() {
           <div>
             <h2>NOUS RETROUVER</h2>
             <p>
-              Gogoguhe, à côté du Collège Imane
+              Balouzon, non loin du Collège Privé Iman
               <br />
               Daloa, Côte d’Ivoire
             </p>
